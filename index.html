@@ -2,7 +2,574 @@
 <html>
   <head>
 <link rel="stylesheet" href="know it.css">
-<script src= 'K_IT.js'> </script>
+<style>body{
+  margin:0;
+  padding:0;
+  width:100vw;
+  height:100vh;
+  top:0;
+  left:0;
+  overflow:hidden;
+  position:absolute;
+  background:#FFF;
+}
+
+body *{
+  transition:1s;
+  user-select:none;
+  font-family: 'Nunito', sans-serif;
+}
+
+#title{
+  position:absolute;
+  font-size:2.5rem;
+  background:rgba(225,225,225,0.4);
+  top:3%;
+  left:22%;
+  padding:2.5% 8% 2.5% 8% ;
+  border-radius:1.5rem;
+  z-index:2;
+  box-shadow:0 2px 3px rgba(0,0,0,0.02);
+  border-top:2px solid lightGreen;
+  font-weight:900;
+}
+
+.phase_1 .description{
+  position:absolute;
+  background:rgba(225,225,225,0.4);
+  top:20%;
+  left:7%;
+  width:80%;
+  padding:2.5% 3% 2.5% 3% ;
+  border-radius:1.5rem;
+  z-index:2;
+  box-shadow:0 2px 3px rgba(0,0,0,0.02);
+  border-top:2px solid lightGreen;
+  font-weight:900;
+  text-align:left;
+}
+
+.b_ground{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  z-index:1;
+  object-fit:cover;
+}
+
+#start{
+  top:90%;
+  left:80%;
+  width:17vw;
+  height:17vw;
+  border-radius:50%;
+  z-index:2;
+  position:absolute;
+  background:rgb(225,225,225,.4);
+  justify-content:center;
+  align-items:center;
+  display:flex;
+  font-weight:900;
+  border-top:2px solid lightGreen;
+  animation-name:glow;
+  animation-duration:1500ms;
+  animation-iteration-count:5;
+ 
+} 
+  @keyframes glow{
+    from{background:rgb(225,225,225,.4);
+         color:black;
+    }
+      50%{background:black;
+          color:white;
+      }
+      to{background:rgb(225,225,225,.4);
+         color:black;
+      }
+  }
+  
+  .modal_box{
+   width:95%;
+   height:60%;
+   left:2.5%;
+   top:-65%;
+   background:white;
+   border-radius:0.4rem;
+   border-radius:0.5rem;
+   box-shadow:0px 3px 3px rgba(0,0,0,.03);
+   position:absolute;
+   z-index:4;
+   border-bottom:2px solid lightGreen;
+  } 
+  
+  #cancel_box{
+    position:fixed;
+    top:-65%;
+    left:91.55%;
+    z-index:5;
+    
+}
+
+.modal_box #header{
+  background:rgba(0,0,0,0.1);
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:5px 3px 5px 3px;
+  margin:0;
+  border-top-left-radius:.5rem;
+  border-top-right-radius:.5rem;
+  box-shadow:0 3px 3px rgba(0,0,0,0.2);
+}  
+
+.modal_box #ai_avater{
+  width:35%;
+  border-radius:50%;
+  position:absolute;
+  top:10%;
+  left:8%;
+}
+  
+.modal_box #ai_name{
+  font-size:2em;
+  position:absolute;
+  top:16%;
+  left:20.5%;
+}
+
+.modal_box #versus{
+  position:absolute;
+  top:20%;
+  left:40%;
+  font-size:3em;
+  width:16vw;
+  height:16vw;
+  background:rgba(0,0,0,0.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:3% 4% 3% 4%;
+  border-radius:50%;
+  box-shadow:0 3px 4px rgba(0,0,0,0.3);
+}
+
+.modal_box #engage{
+  position:absolute;
+  font-size:2.5rem;
+  font-weight:bold;
+  top:80%;
+  left:38.5%;
+  background:lightGreen;
+  width:28%;
+  height:9%;
+  box-shadow:-2px 3px 3px rgba(0,0,0,0.3) inset, 0 3px 3px rgba(0,0,0,0.1);
+  border-radius:1.5rem;
+  box-shadow:0 3px 3px rgba:(0,0,0,0.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal_box #player_pic{
+  position:absolute;
+  width:30%;
+  left:65%;
+  top:45%;
+}
+  
+.modal_box #player_name{
+  font-size:2em;
+  position:absolute;
+  top:60%;
+  left:68.5%;
+}
+
+#question_page{
+  display:none;
+}
+
+#question_page .qp_background{
+  width:100vw;
+  height:100vh;
+  object-fit:fill;
+  z-index:1; 
+}
+
+#question_page #qp_content{
+  background:rgba(225,225,225,0.3);
+  width:95%;
+  height:95%;
+  top:2.5%;
+  left:2.5%;
+  position:absolute;
+  z-index:2;
+  border-radius:0.5rem;
+  border-top:2px solid lightGreen;
+  text-align:center;
+}
+
+#question_page #qp_content #option{
+  font-size:1.5em;
+  font-weight:750;
+}
+
+#question_page .timer{
+  position:fixed;
+  left:2.5%;
+  top:93.5%;
+  width:95vw;
+  height:5%;
+  background:lightGreen;
+  border-bottom-left-radius:0.5rem;
+  border-bottom-right-radius:0.5rem;
+  text-align:center;
+  font-weight:900;
+  justify-content:center;
+  align-items:center;
+  display:flex;
+  z-index:3;
+}
+
+#question_page #status{
+  position:absolute;
+  top:3.5%;
+  left:41%;
+  font-size:1.55em;
+  color:lightGreen;
+}
+
+.modal_box #result{
+  font-size:1.55em;
+  font-weight:900;
+  text-align:center;
+  text-shadow:0 2px 3px rgba(0,0,0,0.06);
+}
+
+.modal_box #my_result_pic{
+  position:absolute;
+  width:30%;
+  top:13%;
+  left:10%;
+}
+
+.modal_box #ai_result_pic{
+  width:35%;
+  border-radius:50%;
+  position:absolute;
+  top:18%;
+  left:60%;
+}
+
+.modal_box #ai_result{
+  font-size:2em;
+  top:40%;
+  left:75%;
+  position:absolute;
+}
+
+.modal_box #my_result{
+ font-size:2em;
+ top:40%;
+ left:22%;
+ position:absolute;
+}
+
+.modal_box #Continue{
+  position:absolute;
+  font-size:1.56rem;
+  font-weight:bold;
+  top:90%;
+  left:1.5%;
+  background:lightGreen;
+  width:97%;
+  height:9%;
+  box-shadow:-2px 3px 3px rgba(0,0,0,0.3) inset, 0 3px 3px rgba(0,0,0,0.1);
+  border-radius:1.5rem;
+  box-shadow:0 3px 3px rgba:(0,0,0,0.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}</style>
+<script> let modal_box,engage,ans,timer,ai_score,
+   my_score,X=1,count=60,resulting;
+
+ ai_score=Math.round(Math.random()*10);
+ ai_score < 5? ai_score=5:0;
+
+ time=()=>{
+   setTimeout( ()=>{
+ go =setInterval(()=>{
+       count -= 1;
+       timer.innerHTML = count + '⏰';
+   (count <=0)?clearInterval(go):1;
+     },1000); }, 1000)
+ };
+ 
+   results = (x)=>{
+    (ai_score > my_score)?
+     x='You lost!':(ai_score < my_score)?
+     x= 'You won!':(ai_score==my_score)?
+     x= 'Draw!':0
+    
+     if(X >=11 || count <=0){
+        count = 1;
+       modal_box.style.top= '10%';
+       cancel_box.style.top= '11%';
+      modal_box.innerHTML = 
+      `<h3 id="result">${x}</h3> 
+       <img src= 'https://i.ibb.co/qRTdXNG/1648114860674.png' id='my_result_pic'>
+       <img src= 'https://i.ibb.co/GH8QyqL/human-computer-brain.jpg' id='ai_result_pic'>
+       <div id='my_result'>${my_score}</div>
+       <div id='ai_result'>${ai_score}</div>
+       <div id='Continue'>refresh page!</div>
+      `;
+  (result.innerHTML == 'You lost!' )?
+     result.style.color= 'red':
+  (result.innerHTML == 'You won!' )?
+     result.style.color= 'lightGreen':
+  (result.innerHTML == 'Draw!' )?
+     result.style.color= 'black':0;
+     }
+   };
+
+
+  Data = 
+      [{Q:'What is the colour of planet Mars?',A:{one:'rusty red',
+                  two:'bright orange',
+                three:'dark red',
+                 four:'dark orange'},
+              C:'one'
+      },
+      {Q:'A male cow is called what?',
+               A:{one:'cow',
+                  two:'stallion',
+                three:'bullock',
+                four:'cattle'},
+              C:'three'
+        
+      },
+                
+      {Q:'The toothbrush is required to be used for how long?',
+              A:{one:'1 year',
+                 two:'6 months',
+               three:'3 months',
+                four:'1½ months'},
+              C:'three'
+        
+      },
+              
+      {Q:'Who is the Father of internet'      ,A:{one:'Charlse Babbage',
+                two:'Albert Einstein',
+              three:'Gottfried Leibniz',
+               four:'Vint Cerf'},
+              C:'four'
+        
+      },
+              
+      {Q:'Who is the richest Man worldwide',
+             A:{one:'Larry Page',
+               two:'Jeff Bezos',
+             three:'Bill gates',
+              four:'Warren Buffet'},
+            C:'two'
+        
+      },
+            
+      {Q:'Iphone\'s latest model is...',
+            A:{one:'I12',
+               two:'Iphone SE',
+             three:'Iphone Xs max',
+              four:'IPhone 13 Pro'},
+           C:'four'
+              
+      },
+          
+      {Q:'Google was first launched when?',
+           A:{one:'April 2001',
+             two:'Febuary 1986',
+            three:'August 1996',
+             four:'July 1914'},
+           C:'three'},
+             
+      {Q:'Planes are painted white because...',
+          A:{one:'they need to blend in the clouds',
+             two:'plane need to reflect light to avoid overheating',
+           three:'Airplanes need white colour to absorb light for internal use',
+             four:'it doesn\'t mean anything'},
+           C:'two'},
+           
+      {Q:'Karl Friedrich Benz invented a popular invention known as the... ',
+        A:{one:'car',
+           two:'television',
+         three:'Telephone',
+          four:'Light bulb'},
+          C:'one'},
+          
+      {Q:'Which of the following animal is not a masupial?',
+       A:{one:'kangaroo',
+          two:'koala',
+        three:'wallabies',
+         four:'sloth'},
+          C:'four'},
+      
+      {Q:'There are 7 continents and _ countries in the world today',
+      A:{one:'195',
+         two:'230',
+       three:'7',
+        four:'342'},
+        C:'one'},
+        
+      {Q:'The snake often reffered to as \`the king of snakes \`is the...',
+      A:{one:'python',
+         two:'anaconda',
+       three:'cobra',
+        four:'horned viper'},
+        C:''},
+        
+      {Q:'The world largest Bird nest was built by what type of bird in 1963',
+       A:{one:'the golden eagle',
+          two:'the crow',
+        three:'the bald eagle',
+        four:'the great pigeon'},
+        C:''},
+        
+      {Q:'The most linguistically diversed country with over 850 languages is',
+      A:{one:'Russia',
+         two:'Alaska',
+       three:'Nigeria',
+        four:'Paupa New Guinea'},
+        C:'four'},
+        
+      {Q:'What is the biggest animal in the world',
+      A:{one:'Elephant',
+         two:'giraffe',
+       three:'Blue whales',
+        four:'Whale shark'},
+           C:'three'},
+           
+      {Q:'What is the fastest marine animal?',
+      A:{one:'dolphin',
+         two:'sea horse',
+       three:'tiger shark',
+       four:'electric eel'},
+          C:'dolphin'},
+       
+      {Q:'The creature that never dies is the',
+      A:{one:'octopus',
+         two:'jellyfish',
+       three:'tortise',
+        four:'turtle'},
+        C:'jellyfish'},
+        
+      {Q:'The largest ocean in the world is?',
+      A:{one:'Pacific ocean',
+         two:'Indian ocean',
+       three:'Atlantic ocean',
+        four:'Arctic ocean'},
+        C:'one'},
+        
+      {Q:'How many countries are there in Canada',
+      A:{one:'4',
+         two:'3',
+       three:'5',
+        four:'2'},
+        C:'one'},
+        
+      {Q:'How old is the world?',
+      A:{one:'2022 billion years',
+         two:'4.543 billion years',
+       three:'2022 years',
+        four:'6000 years'},
+        C:'two'},
+      
+    ];
+    
+  set_data=()=>{
+        
+ pos = Math.round(Math.random()*1);
+  
+  qp_content.innerHTML =
+   `  <br><br><h1>
+      ${Data[pos].Q} </h1><br><br><br>
+      <div id= "option">
+<p>     • ${Data[pos].A.one} </p>
+<p>     • ${Data[pos].A.two} </p>
+<p>     • ${Data[pos].A.three} </p>
+<p>     • ${Data[pos].A.four}  </p> 
+         </div>
+     <div id='status'>${X}/10</div>
+   `;
+   ans = document.querySelectorAll('#qp_content #option p');
+  
+collection= Object.entries(Data[pos].A);
+nomba= Object.keys(Data[pos].A);
+  
+   collection.forEach((item,index)=>{
+     ans[index].onclick=()=>{
+         X+=1;(X>11)?X=11 :0;
+         
+if(nomba[index] == Data[pos].C){
+  ans[index].style.color='lightGreen';
+    status.innerText= X +'/10';
+    my_score+=1;
+  setTimeout(()=>{set_data();}, 1000);
+  results();
+}
+
+else{ ans[index].style.color='red';
+     status.innerText=X +'/10';
+  setTimeout(()=>{set_data();}, 1000);
+  results();
+}
+
+     };
+   });
+  }; 
+
+
+
+execute = () =>{
+    modal_box.style.top = '-65%';
+    cancel_box.style.top= '-65%'
+  setInterval(()=>{
+    document.querySelector('.phase_1').style.display="none";
+     question_page.style.display="block";
+  },1000);
+           set_data();
+};
+
+
+
+window.onload=()=>{
+  
+modal_box = document.querySelectorAll('.modal_box')[0];
+
+timer = document.querySelector('#question_page .timer');
+
+cancel_box.onclick=()=>{
+      modal_box.style.top='-65%';
+      cancel_box.style.top= '-65%';
+      start.style.display= 'flex';
+};
+  
+  
+
+     start.onclick=()=>{
+       start.style.display='none';
+       modal_box.style.top = "10%";
+       cancel_box.style.top= "11.%";
+       modal_box.innerHTML= ` <p id='header'> Game Overview</p><img src="https://i.ibb.co/GH8QyqL/human-computer-brain.jpg" alt='' id='ai_avater'><p id='ai_name'>AI</p><p id="versus">VS</p><img src="https://i.ibb.co/qRTdXNG/1648114860674.png" id="player_pic" alt=''></p><p id="player_name">Player</p><p id="engage">»»»</p>`; 
+         
+         engage = document.querySelectorAll('.modal_box #engage')[0];
+           engage.addEventListener('click',execute);
+           time();
+           my_score=0;
+       };
+     };
+  </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
