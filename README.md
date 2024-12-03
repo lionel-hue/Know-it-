@@ -8,5 +8,8 @@
 <p>This game also has an in built AI you'll play against, Have fun and enjoy!</p>
 
 <p align='center'>
-  <img src='https://i.ibb.co/Ms2Whhc/Screenshot-from-2024-12-03-10-33-33.png' alt=''>
+  <img src='https://i.ibb.co/Ms2Whhc/Screenshot-from-2024-12-03-10-33-33.png' alt='' style='width:40%;'>
 </p>
+
+<p>To play, install the zippied file and run the index.html. </p>
+<p>NB: THIS application is built for mobile as it runs correctly on mobile only!</p>
